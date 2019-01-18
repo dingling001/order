@@ -1,0 +1,37 @@
+/**app.wxss**/
+
+view, scroll-view, swiper, swiper-item, movable-area, movable-view, cover-view,
+cover-image, icon, text, rich-text, progress, button, checkbox-group, checkbox,
+form, input, label, picker, picker-view, radio-group, radio, slider, switch,
+textarea, navigator, functional-page-navigator, image, video, camera,
+live-player, live-pusher, map, canvas, open-data, web-view, ad {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  will-change: transform;
+}
+
+button {
+  background: none;
+  border: 0;
+  line-height: unset;
+  margin: 0;
+  padding: 0;
+}
+
+.button-hover {
+  background: none;
+  color: #222;
+}
+
+button::before {
+  border: 0;
+}
+
+button::after {
+  border: 0;
+}
+
+page {
+  background-color: #fafafa;
+}
