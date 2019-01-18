@@ -1,11 +1,31 @@
 {
-  "pages":[
-    "pages/index/index"
+  "pages": [
+      "pages/index/index",
+    "pages/login/login",
+  
+    "pages/order/order"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"pages/imgs/icon.png",
+        "selectedIconPath":"pages/imgs/icon.png",
+        "selectedColor":"#ff0",
+        "color":"#f0f"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单管理",
+        "iconPath": "pages/imgs/icon2.png",
+        "selectedIconPath": "pages/imgs/icon21.png"
+      }
+    ]
   }
 }
