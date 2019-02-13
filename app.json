@@ -1,9 +1,11 @@
 {
   "pages": [
-      "pages/index/index",
     "pages/login/login",
-  
-    "pages/order/order"
+    "pages/index/index",
+    "pages/order/order",
+    "pages/goods/goods",
+    "pages/finance/finance",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,16 +17,34 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath":"pages/imgs/icon.png",
-        "selectedIconPath":"pages/imgs/icon.png",
-        "selectedColor":"#ff0",
-        "color":"#f0f"
+        "iconPath": "pages/imgs/icon1.jpg",
+        "selectedIconPath": "pages/imgs/icon.png",
+        "selectedColor": "#ff0",
+        "color": "#f0f"
       },
       {
         "pagePath": "pages/order/order",
         "text": "订单管理",
-        "iconPath": "pages/imgs/icon2.png",
-        "selectedIconPath": "pages/imgs/icon21.png"
+        "iconPath": "pages/imgs/icon21.png",
+        "selectedIconPath": "pages/imgs/icon2.png"
+      },
+      {
+        "pagePath": "pages/goods/goods",
+        "text": "商品管理",
+        "iconPath": "pages/imgs/icon31.png",
+        "selectedIconPath": "pages/imgs/icon3.png"
+      },
+      {
+        "pagePath": "pages/finance/finance",
+        "text": "财务管理",
+        "iconPath": "pages/imgs/icon41.png",
+        "selectedIconPath": "pages/imgs/icon4.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人中心",
+        "iconPath": "pages/imgs/icon51.png",
+        "selectedIconPath": "pages/imgs/icon5.png"
       }
     ]
   }

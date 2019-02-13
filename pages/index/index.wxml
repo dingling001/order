@@ -1,14 +1,20 @@
 <!--index.wxml-->
-<view class='top'>
-  <view class='top_box'>
-    <view class='top_item'>
-      <view>59单</view>
-      <view class='top_text'>总计单量</view>
+<scroll-view>
+  <view class='top'>
+    <view class='top_box'>
+      <view class='top_item'>
+        <view>59单</view>
+        <view class='top_text'>总计单量</view>
+      </view>
+      <view class='top_item'>
+        <view>599元</view>
+        <view class='top_text'>总计金额</view>
+      </view>
     </view>
-    <view class='top_item'>
-      <view>599元</view>
-      <view class='top_text'>总计金额</view>
+    <image src='../imgs/bg.png' mode='widthFix'></image>
+  </view>
+  <view class='index_list'>
+    <view class='index_item'>
     </view>
   </view>
-  <image src='../imgs/bg.png' mode='widthFix'></image>
-</view>
+</scroll-view>

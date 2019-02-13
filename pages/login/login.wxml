@@ -1,2 +1,8 @@
 <!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class='logo'>
+<image src='../imgs/logo.png'></image>
+</view>
+<view class='login_input'>
+
+<input placeholder=''></input>
+</view>

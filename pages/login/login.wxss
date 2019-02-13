@@ -1,1 +1,21 @@
 /* pages/login/login.wxss */
+page{
+  background-color: #fff;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 66rpx 0;
+}
+
+.logo image {
+  width: 166rpx;
+  height: 164rpx;
+}
+.login_input{
+  display: flex;
+  align-items: center;
+  margin: 0 24rpx 32rpx 24rpx;
+  background-color: #F8F8F8;
+}

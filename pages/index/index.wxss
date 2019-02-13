@@ -16,6 +16,7 @@
   justify-content: space-between;
  padding: 60rpx 0 90rpx 0;
   z-index: 1;
+  color: #fff;
 }
 .top_item{
   display: flex;
