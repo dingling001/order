@@ -1,7 +1,9 @@
 /* pages/login/login.wxss */
-page{
+
+page {
   background-color: #fff;
 }
+
 .logo {
   display: flex;
   align-items: center;
@@ -13,9 +15,44 @@ page{
   width: 166rpx;
   height: 164rpx;
 }
-.login_input{
+
+.login_input {
   display: flex;
   align-items: center;
   margin: 0 24rpx 32rpx 24rpx;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
+  padding: 30rpx 20rpx;
+  font-size: 26rpx;
+}
+
+.login_input .iconfont {
+  color: #a5a5a5;
+  font-size: 44rpx;
+}
+
+.login_input input {
+  flex: 1;
+  padding: 0 10rpx;
+}
+
+.login_pla {
+  font-size: 26rpx;
+  color: #c7c7c7;
+}
+
+.code_box {
+  padding: 10rpx 20rpx;
+  color: #c7c7c7;
+  font-size: 26rpx;
+  border-left: 2rpx solid #c7c7c7;
+}
+
+.login_btn {
+  margin: 80rpx 25rpx 0 25rpx;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  padding: 30rpx 0;
+  border-radius: 10rpx;
+  background: linear-gradient(to right, #44dc55, #30bc5b); /* 标准的语法 */
 }
