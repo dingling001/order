@@ -1,9 +1,13 @@
 /**index.wxss**/
+page{
+  background-color: #fff;
+}
 .top{
   height: 266rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 .top_box{
   position: absolute;
@@ -13,24 +17,56 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
- padding: 60rpx 0 90rpx 0;
+  justify-content: space-around;
+ /* padding: 60rpx 0 90rpx 0; */
   z-index: 1;
   color: #fff;
 }
 .top_item{
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
-  align-items: center;
-  justify-content: space-between;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* flex: 1; */
+  /* height: 100%; */
+  /* align-items: center; */
+  /* justify-content: space-between; */
   font-size: 40rpx;
   font-weight: bold;
 }
 .top_text{
   font-size: 30rpx;
+  /* margin-top: 50rpx; */
 }
 .top image{
   width: 100%
+}
+.list{
+  font-size: 34rpx;
+  color: #333;
+  font-weight: bold;
+  padding: 30rpx 25rpx;
+}
+.index_item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 25rpx;
+  border-bottom: 2rpx solid #F3F5F7;
+  font-size: 26rpx;
+  color: #333;
+}
+.index_left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.icons_box{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icons{
+  height: 50rpx;
+  width: 50rpx;
+  margin: 0 10rpx 0 0;
 }

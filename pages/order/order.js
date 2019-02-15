@@ -5,12 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tab:0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  order_tab(e){
+    var that = this;
+    if (this.data.tab === e.target.dataset.tab) {
+      return false;
+    } else {
+      that.setData({
+        tab: e.target.dataset.tab
+      })
+    }  
+  },
   onLoad: function (options) {
 
   },

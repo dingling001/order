@@ -1,1 +1,80 @@
 /* pages/order/order.wxss */
+
+.order_top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 -2px 0 0 rgba(85, 84, 84, 0.11);
+  margin: 0 0 30rpx 0;
+  z-index: 1;
+}
+
+.order_top view {
+  flex: 1;
+  padding: 30rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+  color: #02af74;
+  background-color: #fff;
+}
+
+.order_top .active_view {
+  color: #fff;
+  background: linear-gradient(to right, #44dc55, #30bc5b); /* 标准的语法 */
+}
+
+.scroll {
+  background-color: #fff;
+  margin-top: 122rpx;
+}
+
+/* .list{
+  width: 300rpx;
+} */
+
+.list_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #666;
+  padding: 30rpx 0 30rpx 12rpx;
+  border-bottom: 2rpx solid #F8F8F8;
+}
+
+.list_item view {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.list_item .view1 {
+  flex: 1;
+}
+
+.list_item .view2 {
+  flex: 2;
+}
+
+.list_item:first-child {
+  color: #333;
+  overflow: auto
+}
+.price{
+  color: #F71F1F;
+}
+.handle{
+  color: #86F9AE;
+}
+.agree{
+  color: #1DB966
+}
+.refuse{
+  color: #F85151;
+}

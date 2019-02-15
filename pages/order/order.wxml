@@ -1,2 +1,69 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class='order_top'>
+  <view class='{{tab==0?"active_view":""}}' data-tab='0' bindtap='order_tab'>未处理订单</view>
+  <view class='{{tab==1?"active_view":""}}' data-tab='1' bindtap='order_tab'>已处理订单</view>
+</view>
+<scroll-view class='scroll' wx:if='{{tab==0}}'>
+  <scroll-view scroll-x='true' class='list'>
+    <view class='list_item'>
+      <view class='view2'>平台名称</view>
+      <view class='view2'>平台单号</view>
+      <view>地址</view>
+      <view>时间</view>
+      <view>金额</view>
+      <view class='view2'>是否预定</view>
+      <view class='view2'>退单处理</view>
+      <view class='iconfont icon-arrow-down'></view>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-x='true' class='list'>
+    <view class='list_item'>
+      <view class='view2'>饿了么</view>
+      <view class='view2'>13212</view>
+      <view>3门312</view>
+      <view>2019-2-15 14:28:30</view>
+      <view class='price'>38元</view>
+      <view class='view2'>否</view>
+      <view class='view2 agree'>同意</view>
+      <view>配送中</view>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-x='true' class='list'>
+    <view class='list_item'>
+      <view class='view2'>饿了么</view>
+      <view class='view2'>13212</view>
+      <view>3门312</view>
+      <view>2019-2-15 14:28:30</view>
+      <view class='price'>38元</view>
+      <view class='view2'>否</view>
+      <view class='view2 refuse'>拒绝</view>
+      <view>配送中</view>
+    </view>
+  </scroll-view>
+</scroll-view>
+<scroll-view class='scroll' wx:else>
+  <scroll-view scroll-x='true' class='list'>
+    <view class='list_item'>
+      <view class='view2'>平台名称</view>
+      <view class='view2'>平台单号</view>
+      <view>地址</view>
+      <view class='view2'>是否预定</view>
+      <view class='view2'>呼叫配送</view>
+      <view class='view2'>配送状态</view>
+      <view class='view2'>退单处理</view>
+      <!-- <view class='iconfont icon-arrow-down'></view> -->
+    </view>
+  </scroll-view>
+  <scroll-view scroll-x='true' class='list'>
+    <view class='list_item'>
+      <view class='view2'>饿了么</view>
+      <view class='view2'>13212</view>
+      <view>3门312</view>
+      <view class='view2'>是</view>
+      <view class='view2'>呼叫中</view>
+      <view class='view2'>配送中</view>
+      <view class='view2 handle'>处理中</view>
+      <!-- <view>配送中</view> -->
+    </view>
+  </scroll-view>
+</scroll-view>

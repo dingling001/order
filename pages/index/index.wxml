@@ -13,8 +13,28 @@
     </view>
     <image src='../imgs/bg.png' mode='widthFix'></image>
   </view>
+  <view class='list'>今日平台单量</view>
   <view class='index_list'>
     <view class='index_item'>
+      <view class='index_left'>
+        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
+        <view>今日29单</view>
+      </view>
+      <view class='index_right'>+350元</view>
+    </view>
+     <view class='index_item'>
+      <view class='index_left'>
+        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
+        <view>今日29单</view>
+      </view>
+      <view class='index_right'>+1350元</view>
+    </view>
+     <view class='index_item'>
+      <view class='index_left'>
+        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
+        <view>今日29单</view>
+      </view>
+      <view class='index_right'>+3050元</view>
     </view>
   </view>
 </scroll-view>
