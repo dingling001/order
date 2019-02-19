@@ -7,3 +7,39 @@
   </view>
   <view class='search_btn'>搜索</view>
 </view>
+<view class='list_box'>
+  <scroll-view class='left' scroll-y>
+    <view class='left_item text_active'>
+      <view class='text'>绿叶蔬菜</view>
+    </view>
+    <view class='left_item'>
+      <view class='text'>绿叶蔬菜</view>
+    </view>
+     <view class='left_item'>
+      <view class='text'>绿叶蔬菜</view>
+    </view>
+     <view class='left_item'>
+      <view class='text'>绿叶蔬菜</view>
+    </view>
+     <view class='left_item'>
+      <view class='text'>绿叶蔬菜</view>
+    </view>
+     <view class='left_item'>
+      <view class='text'>绿叶蔬菜</view>
+    </view>
+     <view class='left_item'>
+      <view class='text'>绿叶蔬菜</view>
+    </view>
+     <view class='left_item' wx:for='{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}'>
+      <view class='text'>绿叶蔬菜</view>
+    </view>
+    
+  </scroll-view>
+  <scroll-view class='right' scroll-y>
+    <view class='menu'>
+      <picker>线上平台菜单导入</picker>
+      <view class='iconfont icon-xiala'></view>
+    </view>
+    <view class='right_item'></view>
+  </scroll-view>
+</view>

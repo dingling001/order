@@ -11,6 +11,7 @@
   right: 0;
   margin: 20rpx auto;
   width: 90%;
+  z-index: 10;
 }
 
 .search_input {
@@ -45,4 +46,75 @@
   font-size: 24rpx;
   color: #fff;
   background: linear-gradient(to right, #44dc55, #30bc5b); /* 标准的语法 */
+}
+
+.list_box {
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 100rpx 0 0 0; */
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 100rpx 0 0 0;
+  width: 30%;
+  height: 100%;
+  background-color: #f8f8f8;
+overflow: scroll
+
+}
+.left::-webkit-scrollbar {
+    display: none;
+}
+
+.left_item {
+  text-align: center;
+  padding: 15rpx 0;
+  font-size: 24rpx;
+  color: #222;
+  border-bottom: 2rpx solid #fff;
+}
+
+.left_item .text {
+  padding: 15rpx 0;
+  width: 100%;
+}
+
+.text_active {
+  background-color: #fff;
+}
+
+.text_active .text {
+  border-left: 4rpx solid #26c763;
+}
+
+.right {
+  position: fixed;
+  width: 70%;
+  right: 0;
+  top: 0;
+  margin: 100rpx 0 0 0;
+  height: 100%;
+  background-color: #fff;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: linear-gradient(to right, #44dc55, #30bc5b); /* 标准的语法 */
+  padding: 18rpx 20rpx;
+  width: 51%;
+  margin: 0 26rpx 0 45%;
+  font-size: 24rpx;
+  color: #fff;
+  border-radius: 10rpx;
 }
