@@ -1,2 +1,41 @@
 <!--pages/finance/finance.wxml-->
-<text>pages/finance/finance.wxml</text>
+<!--index.wxml-->
+<scroll-view>
+  <view class='top'>
+    <!-- <view class='top_box'>
+      <view class='top_item'>
+        <view>59单</view>
+        <view class='top_text'>总计单量</view>
+      </view>
+      <view class='top_item'>
+        <view>599元</view>
+        <view class='top_text'>总计金额</view>
+      </view>
+    </view> -->
+    <image src='../imgs/bg.png' mode='widthFix'></image>
+  </view>
+  <view class='list'>历史订单</view>
+  <!-- <view class='index_list'>
+    <view class='index_item'>
+      <view class='index_left'>
+        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
+        <view>今日29单</view>
+      </view>
+      <view class='index_right'>+350元</view>
+    </view>
+     <view class='index_item'>
+      <view class='index_left'>
+        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
+        <view>今日29单</view>
+      </view>
+      <view class='index_right'>+1350元</view>
+    </view>
+     <view class='index_item'>
+      <view class='index_left'>
+        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
+        <view>今日29单</view>
+      </view>
+      <view class='index_right'>+3050元</view>
+    </view>
+  </view> -->
+</scroll-view>

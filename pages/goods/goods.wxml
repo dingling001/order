@@ -15,31 +15,72 @@
     <view class='left_item'>
       <view class='text'>绿叶蔬菜</view>
     </view>
-     <view class='left_item'>
+    <view class='left_item'>
       <view class='text'>绿叶蔬菜</view>
     </view>
-     <view class='left_item'>
+    <view class='left_item'>
       <view class='text'>绿叶蔬菜</view>
     </view>
-     <view class='left_item'>
+    <view class='left_item'>
       <view class='text'>绿叶蔬菜</view>
     </view>
-     <view class='left_item'>
+    <view class='left_item'>
       <view class='text'>绿叶蔬菜</view>
     </view>
-     <view class='left_item'>
+    <view class='left_item'>
       <view class='text'>绿叶蔬菜</view>
     </view>
-     <view class='left_item' wx:for='{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}'>
+    <view class='left_item' wx:for='{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}'>
       <view class='text'>绿叶蔬菜</view>
     </view>
-    
+
   </scroll-view>
   <scroll-view class='right' scroll-y>
     <view class='menu'>
-      <picker>线上平台菜单导入</picker>
+      <picker range='{{palt}}' bindchange='palt_fun'>{{palt[index]?palt[index]:'线上平台菜单导入'}}</picker>
       <view class='iconfont icon-xiala'></view>
     </view>
-    <view class='right_item'></view>
+    <swiper class='swiper_box' display-multiple-items='4'>
+      <block>
+        <swiper-item>
+          <view>菜品名称</view>
+        </swiper-item>
+        <swiper-item>
+          <view>计价单位</view>
+        </swiper-item>
+        <swiper-item>
+          <view>数量</view>
+        </swiper-item>
+        <swiper-item>
+          <view>出货价</view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='right_item'>
+      <view class='r_img'>
+        <image src='../imgs/goods.png' mode='widthFix'></image>
+      </view>
+      <view class='r_info'>
+        <view>
+          <text>大白菜</text>
+          <text>500g</text>
+        </view>
+        <view class='weight'>1份</view>
+        <view class='price_box'><view class='price_input'><text>￥</text><input value='12.5' bindinput=''></input></view> <view class='btn'>上传</view></view>
+      </view>
+    </view>
+     <view class='right_item'>
+      <view class='r_img'>
+        <image src='../imgs/goods.png' mode='widthFix'></image>
+      </view>
+      <view class='r_info'>
+        <view>
+          <text>大白菜</text>
+          <text>500g</text>
+        </view>
+        <view class='weight'>1份</view>
+        <view class='price_box'><view class='price_input'><text>￥</text><input value='12.5' bindinput=''></input></view> <view class='btn'>上传</view></view>
+      </view>
+    </view>
   </scroll-view>
 </view>
