@@ -1,2 +1,61 @@
 <!--pages/my/my.wxml-->
-<text>个人中心</text>
+<view class='my_top'>
+  <view class='item_top'>菜农庄：西青路店</view>
+  <view class='item_top'>
+    <view class='iconfont icon-dianpu'></view>
+    <view>3521520</view>
+  </view>
+  <view class='item_top'>
+    <view class='iconfont icon-mingpian'></view>
+    <view>3521520</view>
+  </view>
+  <view class='item_top'>
+    <view class='iconfont icon-shouji'></view>
+    <view>3521520</view>
+    <view class='iconfont icon-bianji'></view>
+  </view>
+  <view class='item_top'>
+    <view class='iconfont icon-location'></view>
+    <view>天津市西青区张家湾8号509室</view>
+    <view class='iconfont icon-bianji'></view>
+  </view>
+  <view class='my_log'>
+    <image src='../imgs/logo.png' mode='widthFix'></image>
+  </view>
+</view>
+<view class='my_title'>打款资料</view>
+<view class='a_info'>
+  <view class='a_item'>建设银行</view>
+  <view class='a_item'>张家窝</view>
+  <view class='a_item'>6217 0000 6000 1548 850</view>
+  <view class='a_item'>天津市 西青区 (滨海西路分行)</view>
+</view>
+<view class='my_item'>
+  <view>打印设置</view>
+  <view>></view>
+</view>
+<view class='my_item m1'>
+  <view>市场经理</view>
+  <view>王强明</view>
+</view>
+<view class='my_item'>
+  <view>联系电话</view>
+  <view>
+    <text class='iconfont icon-dianhuazhengzaibohao'></text> 18756245852</view>
+</view>
+<view class='my_item m1'>
+  <view>客服热线</view>
+  <view>400-8521-256</view>
+</view>
+<view class='my_item m1'>
+  <view>投诉热线</view>
+  <view>400-8521-256</view>
+</view>
+<view class='my_item'>
+  <view>修改密码</view>
+  <view>></view>
+</view>
+<view class='my_item'>
+  <view>退出登录</view>
+  <view>></view>
+</view>

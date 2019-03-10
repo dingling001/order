@@ -2,40 +2,58 @@
 <!--index.wxml-->
 <scroll-view>
   <view class='top'>
-    <!-- <view class='top_box'>
+    <view class='top_box'>
       <view class='top_item'>
-        <view>59单</view>
-        <view class='top_text'>总计单量</view>
+        <view>
+          <view class='date'>2018-12-20</view>
+          <view>
+            <text class='order'>订单预计收入：</text>
+            <text class='order_num'>999元</text>
+          </view>
+        </view>
+        <view class='detail'>查看明细 ></view>
       </view>
-      <view class='top_item'>
-        <view>599元</view>
-        <view class='top_text'>总计金额</view>
-      </view>
-    </view> -->
+    </view>
     <image src='../imgs/bg.png' mode='widthFix'></image>
   </view>
+  <view class='num_box'>
+    <view>
+      <view class='num'>32</view>
+      <view>外卖订单</view>
+    </view>
+    <view>
+      <view class='num'>999</view>
+      <view>收入金额</view>
+    </view>
+    <view>
+      <view class='num'>2</view>
+      <view>退款订单</view>
+    </view>
+    <view>
+      <view class='num'>50</view>
+      <view>退款金额</view>
+    </view>
+  </view>
   <view class='list'>历史订单</view>
-  <!-- <view class='index_list'>
-    <view class='index_item'>
-      <view class='index_left'>
-        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
-        <view>今日29单</view>
-      </view>
-      <view class='index_right'>+350元</view>
+  <view class='date_box'>
+    <picker mode='date' value='YYYY-MM-DD'>2019-03-10</picker>
+    <view>筛选</view>
+  </view>
+  <view class='list_box'>
+    <view class='list_item'>
+      <view>2019-03-10</view>
+      <view>笔数12</view>
+      <view>金额<text>1032</text>元</view>
     </view>
-     <view class='index_item'>
-      <view class='index_left'>
-        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
-        <view>今日29单</view>
-      </view>
-      <view class='index_right'>+1350元</view>
+      <view class='list_item'>
+      <view>2019-03-10</view>
+      <view>笔数12</view>
+      <view>金额<text>1032</text>元</view>
     </view>
-     <view class='index_item'>
-      <view class='index_left'>
-        <view class='icons_box'><image class='icons' src='../imgs/logo.png'></image></view>
-        <view>今日29单</view>
-      </view>
-      <view class='index_right'>+3050元</view>
+      <view class='list_item'>
+      <view>2019-03-10</view>
+      <view>笔数12</view>
+      <view>金额<text>1032</text>元</view>
     </view>
-  </view> -->
+  </view>
 </scroll-view>

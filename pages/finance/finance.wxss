@@ -1,1 +1,95 @@
 /* pages/finance/finance.wxss */
+.top {
+  position: relative;
+}
+
+.top_box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.top_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 34rpx 27rpx;
+  color: #fff;
+}
+
+.date {
+  font-size: 34rpx;
+}
+
+.order {
+  font-size: 28rpx;
+}
+
+.order_num {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.detail {
+  font-size: 24rpx;
+}
+
+.num_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 35rpx 40rpx;
+  margin: -120rpx 27rpx 0 27rpx;
+  font-size: 24rpx;
+  color: #222;
+  text-align: center;
+  box-shadow: 0px 13rpx 49rpx 0px rgba(181, 181, 181, 0.32);
+  border-radius: 10rpx;
+}
+
+.num {
+  font-size: 36rpx;
+  color: #02af74;
+  font-weight: bold;
+}
+
+.list {
+  padding: 50rpx 27rpx;
+  font-weight: bold;
+  font-size: 34rpx;
+  color: #222;
+}
+
+.date_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25rpx 40rpx;
+  margin: 0 27rpx;
+  font-size: 24rpx;
+  color: #222;
+  background-color: #fff;
+  box-shadow: -3rpx 5rpx 49rpx 0px rgba(181, 181, 181, 0.32);
+  border-radius: 10rpx;
+}
+.list_box{
+  margin: 30rpx 0;
+}
+.list_item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666666;
+  padding: 30rpx 50rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #f5f5f5;
+}
+.list_item text{
+  color: #F71F1F;
+  font-size: 30rpx;
+}

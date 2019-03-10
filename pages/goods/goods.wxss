@@ -93,7 +93,7 @@
 }
 
 .text_active .text {
-  border-left: 4rpx solid #26c763;
+  border-left: 6rpx solid #26c763;
 }
 
 .right {
