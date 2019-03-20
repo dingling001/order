@@ -4,17 +4,16 @@
 </view>
 <view class='login_input'>
   <view class='iconfont icon-shouji'></view>
-  <input placeholder='请输入手机号' placeholder-class='login_pla'></input>
-  <view class='code_box'>获取验证码</view>
+  <input placeholder='请输入手机号' placeholder-class='login_pla' bindinput='phone_fun'></input>
+ <button class='code_box' bindtap='getCode' disabled='{{btnDisabled}}'>{{btnValue}}</button>
+ 
 </view>
 <view class='login_input'>
   <view class='iconfont icon-yanzhengma'></view>
   <input placeholder='请输入您的验证码' placeholder-class='login_pla'></input>
-  <!-- <view class='code_box'>获取验证码</view> -->
 </view>
 <view class='login_input'>
   <view class='iconfont icon-mima'></view>
   <input placeholder='请输入您的密码' placeholder-class='login_pla'></input>
-  <!-- <view class='code_box'>获取验证码</view> -->
 </view>
 <button class='login_btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录</button>
