@@ -9,6 +9,7 @@ Page({
   },
 
   onGotUserInfo(e) {
+    if(e.detail)
     wx.switchTab({
       url: '../index/index',
     })

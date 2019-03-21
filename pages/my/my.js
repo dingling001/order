@@ -7,10 +7,16 @@ Page({
   data: {
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  loginout(){
+wx.removeStorage({
+  key: 'token',
+  success: function(res) {
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
+})
+  },
   onLoad: function (options) {
 
   },
