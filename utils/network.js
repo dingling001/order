@@ -36,7 +36,6 @@ function request(method, requestHandler) {
     method: method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
     header: header, // 设置请求的 header
     success: function (res) {
-      wx.hideLoading()
       //注意：可以对参数解密等处理
       if (res.statusCode == 403) {
         wx.showToast({

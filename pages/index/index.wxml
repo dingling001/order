@@ -3,11 +3,11 @@
   <view class='top'>
     <view class='top_box'>
       <view class='top_item'>
-        <view>59单</view>
+        <view>0单</view>
         <view class='top_text'>总计单量</view>
       </view>
       <view class='top_item'>
-        <view>599元</view>
+        <view>0元</view>
         <view class='top_text'>总计金额</view>
       </view>
     </view>

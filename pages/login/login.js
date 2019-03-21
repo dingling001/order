@@ -11,7 +11,8 @@ Page({
     cansend: true,
     phone: '',
     code: '',
-    loginType: 2
+    loginType: 1,
+    password: ''
   },
   timer: function() {
     let promise = new Promise((resolve, reject) => {
@@ -37,6 +38,7 @@ Page({
   // 登录
   onGotUserInfo(e) {
     let that = this;
+    console.log(that.data.password)
     if (e.detail.userInfo) {
       if (!(/^1[3456789]\d{9}$/.test(that.data.phone))) {
         wx.showToast({
@@ -44,15 +46,23 @@ Page({
           icon: 'none',
           duration: 2000
         })
-      } else if (that.data.code == '') {
+      }
+      // else if (that.data.code == '') {
+      //   wx.showToast({
+      //     title: '请输入验证码',
+      //     icon: 'none',
+      //     duration: 2000
+      //   })
+      // } 
+      else if (that.data.passwrod == '') {
         wx.showToast({
-          title: '请输入验证码',
+          title: '请输入密码',
           icon: 'none',
           duration: 2000
         })
       } else {
         network.POST({
-          url: '/wxclient/user/login',
+          url: 'wxclient/user/login',
           header: {
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
           },
@@ -60,6 +70,7 @@ Page({
             phone: that.data.phone,
             code: that.data.code,
             loginType: that.data.loginType,
+            password: that.data.password
           },
           success(res) {
             if (res.data.code == 200) {
@@ -68,7 +79,7 @@ Page({
               })
               wx.setStorage({
                 key: 'token',
-                data: res,
+                data: res.data.data,
                 success() {
                   wx.switchTab({
                     url: '../index/index',
@@ -97,6 +108,11 @@ Page({
       code: e.detail.value
     })
   },
+  passwrod_fun(e) {
+    this.setData({
+      password: e.detail.value
+    })
+  },
   // 发送验证码
   getCode() {
     let that = this
@@ -109,7 +125,10 @@ Page({
       })
       return;
     }
-    if (that.data.msg !== '获取验证码') {
+    // if (that.data.msg !== '获取验证码') {
+    //   return
+    // }
+    if (that.data.passwrod == '') {
       return
     }
     const countDown = setInterval(() => {
@@ -135,7 +154,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
       params: {
-        phone: that.data.phone
+        phone: that.data.phone,
       },
       success(res) {
         if (res.data.code == 200) {
