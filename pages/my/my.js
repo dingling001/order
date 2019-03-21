@@ -1,4 +1,5 @@
 // pages/my/my.js
+let network = require('../../utils/network.js')
 Page({
 
   /**
@@ -7,66 +8,78 @@ Page({
   data: {
 
   },
-  loginout(){
-wx.removeStorage({
-  key: 'token',
-  success: function(res) {
-    wx.navigateTo({
-      url: '../login/login',
+  geMyData(){
+    network.GET({
+      url: 'wxclient/shop/userCenter',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      },
+      params: {},
+      success(res) {
+        console.log(res)
+      },
     })
   },
-})
+  loginout() {
+    wx.removeStorage({
+      key: 'token',
+      success: function(res) {
+        wx.navigateTo({
+          url: '../login/login',
+        })
+      },
+    })
   },
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    this.geMyData()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function() {
+    this.geMyData()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

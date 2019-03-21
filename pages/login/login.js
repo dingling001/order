@@ -6,60 +6,163 @@ Page({
    * 页面的初始数据
    */
   data: {
-    btnValue: '获取验证码',
-    btnDisabled: false,
+    count: 60,
+    msg: '获取验证码',
+    cansend: true,
     phone: '',
     code: '',
-    second: 60
+    loginType: 2
   },
-  timer: function () {
+  timer: function() {
     let promise = new Promise((resolve, reject) => {
       let setTimer = setInterval(
         () => {
-          var second = this.data.second - 1;
           this.setData({
-            second: second,
-            btnValue: second + '秒',
-            btnDisabled: true
+            second: this.data.second - 1
           })
           if (this.data.second <= 0) {
             this.setData({
               second: 60,
-              btnValue: '获取验证码',
-              btnDisabled: false
+              alreadySend: false,
+              send: true
             })
             resolve(setTimer)
           }
-        }
-        , 1000)
+        }, 1000)
     })
     promise.then((setTimer) => {
       clearInterval(setTimer)
     })
   },
+  // 登录
   onGotUserInfo(e) {
-    if(e.detail)
-    wx.switchTab({
-      url: '../index/index',
-    })
+    let that = this;
+    if (e.detail.userInfo) {
+      if (!(/^1[3456789]\d{9}$/.test(that.data.phone))) {
+        wx.showToast({
+          title: '输入手机号有误',
+          icon: 'none',
+          duration: 2000
+        })
+      } else if (that.data.code == '') {
+        wx.showToast({
+          title: '请输入验证码',
+          icon: 'none',
+          duration: 2000
+        })
+      } else {
+        network.POST({
+          url: '/wxclient/user/login',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+          },
+          params: {
+            phone: that.data.phone,
+            code: that.data.code,
+            loginType: that.data.loginType,
+          },
+          success(res) {
+            if (res.data.code == 200) {
+              wx.showToast({
+                title: '登录成功',
+              })
+              wx.setStorage({
+                key: 'token',
+                data: res,
+                success() {
+                  wx.switchTab({
+                    url: '../index/index',
+                  })
+                }
+              })
+            } else {
+              wx.showToast({
+                title: res.data.msg,
+                icon: 'none'
+              })
+            }
+          },
+        })
+      }
+    }
+
   },
   phone_fun(e) {
     this.setData({
       phone: e.detail.value
     })
   },
+  code_fun(e) {
+    this.setData({
+      code: e.detail.value
+    })
+  },
   // 发送验证码
   getCode() {
-    let phoen_reg = /^[1][3,4,5,7,8][0-9]{9}$/;
-    this.timer()
-    // /wxclient/user / sendCode
-  },
-  // 登录
-  login_fun(e) {
-    // /wxclient/user / login
-  },
-  onLoad: function(options) {
+    let that = this
+    // 手机号码格式验证
+    if (!(/^1[3456789]\d{9}$/.test(that.data.phone))) {
+      wx.showToast({
+        title: '输入手机号有误',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (that.data.msg !== '获取验证码') {
+      return
+    }
+    const countDown = setInterval(() => {
+      if (that.data.count <= 0) {
+        that.setData({
+          count: 60,
+          cansend: true,
+          msg: '获取验证码'
+        })
+        clearInterval(countDown)
+        return
+      }
+      that.data.count--
+        that.setData({
+          count: that.data.count,
+          cansend: false,
+          msg: that.data.count < 10 ? `请等待0${that.data.count}s` : `请等待${that.data.count}s`
+        })
+    }, 1000);
+    network.GET({
+      url: 'wxclient/user/sendCode',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      },
+      params: {
+        phone: that.data.phone
+      },
+      success(res) {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '发送成功',
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
+      },
+    })
 
+  },
+
+
+  onLoad: function(options) {
+    wx.getStorage({
+      key: 'token',
+      success: function(res) {
+        wx.switchTab({
+          url: '../index/index',
+        })
+      },
+    })
   },
 
   /**

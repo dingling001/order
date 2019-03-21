@@ -1,14 +1,14 @@
 const API_URL = 'https://api.laidanl.com/'
-const imgUrl = 'https://tv.zt31.cn'
+const imgUrl = ''
 
 var requestHandler = {
   url: "",
   header: "",
   params: {},
-  success: function(res) {
+  success: function (res) {
     // success
   },
-  fail: function() {
+  fail: function () {
 
   },
 }
@@ -30,33 +30,40 @@ function request(method, requestHandler) {
   var params = requestHandler.params;
   var url = requestHandler.url;
   var header = requestHandler.header;
-  wx.showLoading({
-    title: '加载中',
-  })
   wx.request({
     url: API_URL + url,
     data: params,
     method: method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-    header: {
-      'content-type': header
-    }, // 设置请求的 header
-    success: function(res) {
+    header: header, // 设置请求的 header
+    success: function (res) {
       wx.hideLoading()
       //注意：可以对参数解密等处理
-      if (res.data.code == 3) {
-
+      if (res.statusCode == 403) {
+        wx.showToast({
+          title: '登录已失效，点击登录！',
+          icon: 'none'
+        })
+        wx.removeStorage({
+          key: 'token',
+          success(res) {
+            console.log(res.data)
+          }
+        })
+        wx.switchTab({
+          url: '/pages/login/login',
+        })
 
       } else {
         requestHandler.success(res)
       }
     },
-    fail: function() {
+    fail: function (err) {
       wx.showToast({
         title: '网络延迟，稍后再试',
         icon: 'none'
       })
     },
-    complete: function() {
+    complete: function () {
       // complete
     }
   })
@@ -66,5 +73,5 @@ module.exports = {
   GET: GET,
   POST: POST,
   getUrlKey: getUrlKey,
-  imgUrl: imgUrl
+  imgUrl: imgUrl,
 }
