@@ -8,16 +8,25 @@ Page({
 
   },
   getIndexData() {
-    network.GET({
-      url: 'wxclient/order/getOrders',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-      },
-      params: {},
-      success(res) {
-        console.log(res)
+    wx.getStorage({
+      key: 'token',
+      success: function(res_token) {
+        network.GET({
+          url: 'wxclient/order/getOrders',
+          header: {
+            "Content-Type": "application/json;charset=UTF-8",
+            "token": res_token.data
+          },
+          params: {
+            client:'wx'
+          },
+          success(res) {
+            console.log(res)
+          },
+        })
       },
     })
+   
   },
   onLoad: function() {
     this.getIndexData()
