@@ -14,7 +14,7 @@ Page({
         network.GET({
           url: 'wxclient/order/getOrders',
           header: {
-            "Content-Type": "application/json;charset=UTF-8",
+            "Content-Type": "application/json;charset=UTF-8;text/plain",
             "token": res_token.data
           },
           params: {
