@@ -5,9 +5,15 @@ const app = getApp()
 
 Page({
   data: {
-
+    list: [],
+    orderCount: 0,
+    orderSum: 0
   },
   getIndexData() {
+    wx.showLoading({
+      title: '加载中……',
+    })
+    let that = this;
     wx.getStorage({
       key: 'token',
       success: function(res_token) {
@@ -18,15 +24,19 @@ Page({
             "token": res_token.data
           },
           params: {
-            client:'wx'
+            paltform: 'wx'
           },
           success(res) {
-            console.log(res)
+            that.setData({
+              orderCount: res.data.data.orderCount,
+              orderSum: res.data.data.orderSum,
+              list: res.data.data.list,
+            })
           },
         })
       },
     })
-   
+    wx.hideLoading()
   },
   onLoad: function() {
     this.getIndexData()

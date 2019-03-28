@@ -1,20 +1,19 @@
 <!--pages/goods/goods.wxml-->
-<!-- <view class='search_box'>
+<navigator class='search_box' url='./search/search'>
   <view class='search_input'>
     <icon type="search" size="16" color="#BBBBBB"></icon>
-    <input placeholder='请输入菜名' type='text' placeholder-class='input_pla'></input>
+    <input placeholder='请输入关键字' type='text' placeholder-class='input_pla'></input>
     <icon type="clear" size="16" color="##D8D8D9"></icon>
   </view>
   <view class='search_btn'>搜索</view>
-</view> -->
+</navigator>
   <view class='menu'>
       <picker range='{{palt}}' bindchange='palt_fun'>{{palt[index]?palt[index]:'线上平台菜单导入'}}</picker>
       <view class='iconfont icon-xiala'></view>
     </view>
 <view class='list_box'>
   <scroll-view class='left' scroll-y>
-  
-    <view class='left_item {{gindex==index?"text_active":""}}' wx:for='{{goodsList}}'>
+    <view class='left_item {{gindex==index?"text_active":""}}' wx:for='{{goodsList}}' bindtap='left_nav'>
       <view class='text'>{{item.categoryName}}</view>
     </view>
 
@@ -40,20 +39,22 @@
         </swiper-item>
       </block>
     </swiper>
-    <view class='right_item'>暂无数据</view>
-    <!-- <view class='right_item'>
+    <view class='nodata' wx:if='{{goodsList.length==0}}'>暂无数据</view>
+    <block wx:else>
+    <view class='right_item' wx:for='{{goodsList}}'>
       <view class='r_img'>
-        <image src='../imgs/goods.png' mode='widthFix'></image>
+        <image src='{{item.picture}}' mode='widthFix'></image>
       </view>
       <view class='r_info'>
         <view>
-          <text>大白菜</text>
-          <text>500g</text>
+          <text>{{item.name}}</text>
+          <!-- <text>500g</text> -->
         </view>
-        <view class='weight'>1份</view>
-        <view class='price_box'><view class='price_input'><text>￥</text><input value='12.5' bindinput=''></input></view> <view class='btn'>上传</view></view>
+        <view class='weight'>1{{item.unit}}</view>
+        <view class='price_box'><view class='price_input'><text>￥</text><input value='' bindinput=''></input></view> <view class='btn'>上传</view></view>
       </view>
     </view>
+    </block>
      <view class='right_item'>
       <view class='r_img'>
         <image src='../imgs/goods.png' mode='widthFix'></image>
@@ -66,7 +67,7 @@
         <view class='weight'>1份</view>
         <view class='price_box'><view class='price_input'><text>￥</text><input value='12.5' bindinput=''></input></view> <view class='btn'>上传</view></view>
       </view>
-    </view> -->
+    </view>
 
   </scroll-view>
 </view>

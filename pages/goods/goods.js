@@ -23,9 +23,7 @@ Page({
       "unit": ""
 	}
     ],
-    gategory:[{
-
-    }],
+    gategory:[],
     gindex:0
   },
   palt_fun(e) {
@@ -46,9 +44,9 @@ Page({
             "token": res_token.data
           },
           params: {
-            client: 'wx',
-            name:'',
-            econdaryCategory:''
+            paltform: 'wx',
+            name:'天天领菜',
+            secondaryCategory:''
           },
           success(res) {
             console.log(res)
@@ -61,6 +59,9 @@ Page({
         })
       },
     })
+  },
+  left_nav(e){
+
   },
   // 获取分类
   getCategoryVo(){
@@ -75,7 +76,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            client: 'wx',
+            paltform: 'wx',
           },
           success(res) {
             console.log(res)

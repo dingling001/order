@@ -1,0 +1,9 @@
+<!--pages/goods/search/search.wxml-->
+<view class='search_box'>
+  <view class='search_input'>
+    <icon type="search" size="16" color="#BBBBBB"></icon>
+    <input placeholder='请输入关键字' type='text' placeholder-class='input_pla'></input>
+    <icon type="clear" size="16" color="##D8D8D9"></icon>
+  </view>
+  <view class='search_btn'>搜索</view>
+</view>

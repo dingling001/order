@@ -1,11 +1,12 @@
 // pages/order/order.js
-Page({
+let network = require('../../utils/network.js')
+const app = getApp()
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
-    tab:0
+    tab:0,
+    size:10,
+    records:[]
   },
   order_tab(e){
     var that = this;
@@ -16,9 +17,41 @@ Page({
         tab: e.target.dataset.tab
       })
     }  
+    this.getOrderList(this.data.tab)
   },
+  getOrderList(orderStatus){
+    wx.showLoading({
+      title: '加载中……',
+    })
+    let that = this;
+    wx.getStorage({
+      key: 'token',
+      success: function (res_token) {
+        network.GET({
+          url: 'wxclient/order/getOrderList',
+          header: {
+            "Content-Type": "application/json;charset=UTF-8",
+            "token": res_token.data
+          },
+          params: {
+            paltform: 'wx',
+            current:0,
+            size:that.data.size,
+            orderStatus: orderStatus
+          },
+          success(res) {
+            that.setData({
+              records: res.data.data.records
+            })
+          },
+        })
+      },
+    })
+    wx.hideLoading()
+  },
+ 
   onLoad: function (options) {
-
+    this.getOrderList(0)
   },
 
   /**

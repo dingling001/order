@@ -16,30 +16,21 @@
       <view class='iconfont icon-arrow-down'></view>
     </view>
   </scroll-view>
-  <scroll-view scroll-x='true' class='list'>
-    <view class='list_item'>
-      <view class='view2'>饿了么</view>
-      <view class='view2'>13212</view>
-      <view>3门312</view>
-      <view>2019-2-15 14:28:30</view>
-      <view class='price'>38元</view>
-      <view class='view2'>否</view>
-      <view class='view2 agree'>同意</view>
-      <view>配送中</view>
-    </view>
-  </scroll-view>
-  <scroll-view scroll-x='true' class='list'>
-    <view class='list_item'>
-      <view class='view2'>饿了么</view>
-      <view class='view2'>13212</view>
-      <view>3门312</view>
-      <view>2019-2-15 14:28:30</view>
-      <view class='price'>38元</view>
-      <view class='view2'>否</view>
-      <view class='view2 refuse'>拒绝</view>
-      <view>配送中</view>
-    </view>
-  </scroll-view>
+  <view class='nodata' wx:if='{{records.length==0}}'>暂无数据</view>
+  <block wx:else>
+    <scroll-view scroll-x='true' class='list'>
+      <view class='list_item' wx:for='{{records}}'>
+        <view class='view2'>饿了么</view>
+        <view class='view2'>13212</view>
+        <view>3门312</view>
+        <view>2019-2-15 14:28:30</view>
+        <view class='price'>38元</view>
+        <view class='view2'>否</view>
+        <view class='view2 agree'>同意</view>
+        <view>配送中</view>
+      </view>
+    </scroll-view>
+  </block>
 </scroll-view>
 <scroll-view class='scroll' wx:else>
   <scroll-view scroll-x='true' class='list'>
@@ -54,16 +45,19 @@
       <!-- <view class='iconfont icon-arrow-down'></view> -->
     </view>
   </scroll-view>
-  <scroll-view scroll-x='true' class='list'>
-    <view class='list_item'>
-      <view class='view2'>饿了么</view>
-      <view class='view2'>13212</view>
-      <view>3门312</view>
-      <view class='view2'>是</view>
-      <view class='view2'>呼叫中</view>
-      <view class='view2'>配送中</view>
-      <view class='view2 handle'>处理中</view>
-      <!-- <view>配送中</view> -->
-    </view>
-  </scroll-view>
+  <view class='nodata' wx:if='{{records.length==0}}'>暂无数据</view>
+  <block wx:else>
+    <scroll-view scroll-x='true' class='list'>
+      <view class='list_item'>
+        <view class='view2'>饿了么</view>
+        <view class='view2'>13212</view>
+        <view>3门312</view>
+        <view class='view2'>是</view>
+        <view class='view2'>呼叫中</view>
+        <view class='view2'>配送中</view>
+        <view class='view2 handle'>处理中</view>
+        <!-- <view>配送中</view> -->
+      </view>
+    </scroll-view>
+  </block>
 </scroll-view>
