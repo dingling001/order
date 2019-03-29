@@ -1,52 +1,5 @@
 /* pages/goods/goods.wxss */
 
-.search_box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 26rpx;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 20rpx auto;
-  width: 90%;
-  z-index: 10;
-}
-
-.search_input {
-  flex: 1;
-  background-color: #fff;
-  border-radius: 10rpx;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 10rpx 0 0;
-  padding: 0 15rpx;
-  border: 2rpx solid #f2f2f2;
-}
-
-/* .input_pla{
-  height: 60rpx;
-  line-height: 60rpx;
-} */
-
-.search_input input {
-  flex: 1;
-  margin: 0 15rpx;
-  /* padding: 20rpx 0; */
-  height: 60rpx;
-  line-height: 60rpx;
-}
-
-.search_btn {
-  text-align: center;
-  padding: 10rpx 23rpx;
-  border-radius: 10rpx;
-  font-size: 24rpx;
-  color: #fff;
-  background: linear-gradient(to right, #44dc55, #30bc5b); /* 标准的语法 */
-}
 
 .list_box {
   /* display: flex;
@@ -56,7 +9,7 @@
   position: fixed;
   width: 100%;
   left: 0;
-  top: 100rpx;
+  top: 200rpx;
   height: 100%;
 }
 
@@ -113,7 +66,7 @@
   background: linear-gradient(to right, #44dc55, #30bc5b); /* 标准的语法 */
   padding: 18rpx 20rpx;
   width: 51%;
-  margin: 15rpx 26rpx 0 45%;
+  margin:100rpx 26rpx 0 45%;
   font-size: 24rpx;
   color: #fff;
   border-radius: 10rpx;
@@ -146,7 +99,8 @@
 }
 
 .r_img image {
-  width: 100%;
+width: 220rpx;
+  height: 220rpx;
 }
 
 .right_item {

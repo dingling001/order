@@ -37,11 +37,12 @@ function request(method, requestHandler) {
     header: header, // 设置请求的 header
     success: function(res) {
       //注意：可以对参数解密等处理
+      // console.log(res.data.code)
       if (res.data.code == 200) {
         requestHandler.success(res)
-      } else {
+      } else if (res.data.code == 401) {
         wx.showToast({
-          title: '登录已失效，请登录！',
+          title: '登录已失效，点击登录！',
           icon: 'none'
         })
         wx.removeStorage({
@@ -50,9 +51,11 @@ function request(method, requestHandler) {
             console.log(res.data)
           }
         })
-        wx.switchTab({
+        wx.redirectTo({
           url: '/pages/login/login',
         })
+      } else {
+        requestHandler.success(res)
       }
     },
     fail: function(err) {
