@@ -46,7 +46,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            client: 'wx',
+            platform: 'wx',
             name:'',
             econdaryCategory:''
           },
@@ -75,7 +75,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            client: 'wx',
+            platform: 'wx',
           },
           success(res) {
             console.log(res)

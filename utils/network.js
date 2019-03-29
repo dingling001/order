@@ -5,10 +5,10 @@ var requestHandler = {
   url: "",
   header: "",
   params: {},
-  success: function (res) {
+  success: function(res) {
     // success
   },
-  fail: function () {
+  fail: function() {
 
   },
 }
@@ -35,11 +35,13 @@ function request(method, requestHandler) {
     data: params,
     method: method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
     header: header, // 设置请求的 header
-    success: function (res) {
+    success: function(res) {
       //注意：可以对参数解密等处理
-      if (res.statusCode == 403) {
+      if (res.data.code == 200) {
+        requestHandler.success(res)
+      } else {
         wx.showToast({
-          title: '登录已失效，点击登录！',
+          title: '登录已失效，请登录！',
           icon: 'none'
         })
         wx.removeStorage({
@@ -51,18 +53,15 @@ function request(method, requestHandler) {
         wx.switchTab({
           url: '/pages/login/login',
         })
-
-      } else {
-        requestHandler.success(res)
       }
     },
-    fail: function (err) {
+    fail: function(err) {
       wx.showToast({
         title: '网络延迟，稍后再试',
         icon: 'none'
       })
     },
-    complete: function () {
+    complete: function() {
       // complete
     }
   })
