@@ -8,23 +8,10 @@ Page({
   data: {
     palt: ['饿了么', '美团外卖', '京东到家'],
     palt_name: '线上平台菜单导入',
-    index:-1,
-    goodsList:[{
-      "categoryName": "测试",
-      "id": 0,
-      "name": "",
-      "picture": "",
-      "platformCode": "",
-      "secondaryCategoryName": "",
-      "skuCode": "",
-      "skuid": 0,
-      "spec": "",
-      "supplyPrice": 0,
-      "unit": ""
-	}
-    ],
-    gategory:[],
-    gindex:0
+    index: -1,
+    goodsList: [],
+    gategory: [],
+    gindex: 0
   },
   palt_fun(e) {
     console.log(e)
@@ -32,11 +19,14 @@ Page({
       index: e.detail.value
     })
   },
-  getGoodsList(){
-    let that=this;
+  getGoodsList() {
+    let that = this;
+    wx.showLoading({
+      title: '加载中……',
+    })
     wx.getStorage({
       key: 'token',
-      success: function (res_token) {
+      success: function(res_token) {
         network.GET({
           url: 'wxclient/commodity/commodityList',
           header: {
@@ -45,30 +35,32 @@ Page({
           },
           params: {
             paltform: 'wx',
-            name:'天天领菜',
-            secondaryCategory:''
+            name: '',
+            secondaryCategory: ''
           },
           success(res) {
-            console.log(res)
-           if(res.data.code==200){
-             that.setData({
-               goodsList: res.data.data
-             })
-           }
+            let goodsList = res.data.data;
+            for (let i in goodsList) {
+              goodsList[i].picture = goodsList[i].picture.split(',')[0]
+            }
+            that.setData({
+              goodsList: res.data.data
+            })
+            wx.hideLoading()
           },
         })
       },
     })
   },
-  left_nav(e){
+  left_nav(e) {
 
   },
   // 获取分类
-  getCategoryVo(){
+  getCategoryVo() {
     let that = this;
     wx.getStorage({
       key: 'token',
-      success: function (res_token) {
+      success: function(res_token) {
         network.GET({
           url: 'wxclient/category/getCategoryVo',
           header: {

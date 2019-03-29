@@ -7,19 +7,19 @@
   </view>
   <view class='search_btn'>搜索</view>
 </navigator>
-  <view class='menu'>
-      <picker range='{{palt}}' bindchange='palt_fun'>{{palt[index]?palt[index]:'线上平台菜单导入'}}</picker>
-      <view class='iconfont icon-xiala'></view>
-    </view>
+<view class='menu'>
+  <picker range='{{palt}}' bindchange='palt_fun'>{{palt[index]?palt[index]:'线上平台菜单导入'}}</picker>
+  <view class='iconfont icon-xiala'></view>
+</view>
 <view class='list_box'>
   <scroll-view class='left' scroll-y>
-    <view class='left_item {{gindex==index?"text_active":""}}' wx:for='{{goodsList}}' bindtap='left_nav'>
+    <view class='left_item {{gindex==index?"text_active":""}}' wx:for='{{goodsList}}' wx:key='unique' bindtap='left_nav'>
       <view class='text'>{{item.categoryName}}</view>
     </view>
 
   </scroll-view>
   <scroll-view class='right' scroll-y>
-  
+
     <swiper class='swiper_box' display-multiple-items='4'>
       <block>
         <swiper-item>
@@ -39,23 +39,29 @@
         </swiper-item>
       </block>
     </swiper>
-    <view class='nodata' wx:if='{{goodsList.length==0}}'>暂无数据</view>
+    <view class='nodata' wx:if='{{goodsList.length==0}}'>加载中...</view>
     <block wx:else>
-    <view class='right_item' wx:for='{{goodsList}}'>
-      <view class='r_img'>
-        <image src='{{item.picture}}' mode='widthFix'></image>
-      </view>
-      <view class='r_info'>
-        <view>
-          <text>{{item.name}}</text>
-          <!-- <text>500g</text> -->
+      <view class='right_item' wx:for='{{goodsList}}' wx:key='{{item.id}}'>
+        <view class='r_img'>
+          <image src='{{item.picture}}' wx:if='{{item.picture}}' mode='widthFix'></image>
         </view>
-        <view class='weight'>1{{item.unit}}</view>
-        <view class='price_box'><view class='price_input'><text>￥</text><input value='' bindinput=''></input></view> <view class='btn'>上传</view></view>
+        <view class='r_info'>
+          <view>
+            <text>{{item.name}}</text>
+            <!-- <text>500g</text> -->
+          </view>
+          <view class='weight'>1{{item.unit}}</view>
+          <view class='price_box'>
+            <view class='price_input'>
+              <text>￥</text>
+              <input value='' bindinput=''></input>
+            </view>
+            <view class='btn'>上传</view>
+          </view>
+        </view>
       </view>
-    </view>
     </block>
-     <view class='right_item'>
+    <!-- <view class='right_item'>
       <view class='r_img'>
         <image src='../imgs/goods.png' mode='widthFix'></image>
       </view>
@@ -67,7 +73,7 @@
         <view class='weight'>1份</view>
         <view class='price_box'><view class='price_input'><text>￥</text><input value='12.5' bindinput=''></input></view> <view class='btn'>上传</view></view>
       </view>
-    </view>
+    </view> -->
 
   </scroll-view>
 </view>

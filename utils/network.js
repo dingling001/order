@@ -54,7 +54,16 @@ function request(method, requestHandler) {
         wx.redirectTo({
           url: '/pages/login/login',
         })
+      } else if (res.data.code == 500) {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none'
+        })
       } else {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none'
+        })
         requestHandler.success(res)
       }
     },
