@@ -51,10 +51,11 @@
   <view>投诉热线</view>
   <view>400-8521-256</view>
 </view>
-<view class='my_item'>
+
+<navigator class='my_item' url='./changepass/changepass'>
   <view>修改密码</view>
   <view>></view>
-</view>
+</navigator>
 <view class='my_item' bindtap='loginout'>
   <view>退出登录</view>
   <view>></view>

@@ -1,6 +1,5 @@
 /* pages/goods/goods.wxss */
 
-
 .list_box {
   /* display: flex;
   align-items: center;
@@ -43,6 +42,7 @@
 
 .text_active {
   background-color: #fff;
+  color: #26c763;
 }
 
 .text_active .text {
@@ -66,7 +66,7 @@
   background: linear-gradient(to right, #44dc55, #30bc5b); /* 标准的语法 */
   padding: 18rpx 20rpx;
   width: 51%;
-  margin:100rpx 26rpx 0 45%;
+  margin: 100rpx 26rpx 0 45%;
   font-size: 24rpx;
   color: #fff;
   border-radius: 10rpx;
@@ -75,7 +75,6 @@
 .menu picker {
   flex: 1;
   text-align: center;
-
 }
 
 .swiper_box {
@@ -91,7 +90,7 @@
 
 .r_img {
   width: 220rpx;
-  height: 220rpx;
+  height: 165rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,8 +99,8 @@
 }
 
 .r_img image {
-width: 220rpx;
-  height: 220rpx;
+  width: 220rpx;
+  height: 165rpx;
 }
 
 .right_item {
@@ -110,6 +109,7 @@ width: 220rpx;
   font-size: 26rpx;
   padding: 20rpx 5rpx;
   border-bottom: 2rpx solid #eee;
+  overflow-x: scroll;
   /* justify-content: space-between */
 }
 
@@ -117,7 +117,7 @@ width: 220rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 0 20rpx 0;  
+  margin: 0 0 20rpx 0;
 }
 
 .btn {
@@ -147,7 +147,7 @@ width: 220rpx;
 
 .price_box input {
   width: 56rpx;
-  padding: 10rpx 0;
+  /* padding: 10rpx 0; */
   text-align: center;
   height: 30rpx;
   line-height: 30rpx;
@@ -162,5 +162,17 @@ width: 220rpx;
   flex: 1;
   display: flex;
   align-items: center;
-  color: #FF1D32;
+  color: #ff1d32;
+}
+
+.r_top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+.r_list {
+  margin: 50rpx 0 0 0;
 }

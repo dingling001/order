@@ -6,7 +6,8 @@
     "pages/goods/goods",
     "pages/finance/finance",
     "pages/my/my",
-    "pages/goods/search/search"
+    "pages/goods/search/search",
+    "pages/my/changepass/changepass"
   ],
   "window": {
     "backgroundTextStyle": "light",
