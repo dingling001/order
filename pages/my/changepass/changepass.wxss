@@ -1,0 +1,9 @@
+/* pages/my/changepass/changepass.wxss */
+
+.change_box {
+  margin: 50rpx 0;
+}
+
+.change_box .login_input {
+  background-color: #fff;
+}
