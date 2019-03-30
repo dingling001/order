@@ -6,19 +6,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+myinfo:[]
   },
   geMyData(){
-    network.GET({
-      url: 'wxclient/shop/userCenter',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-      },
-      params: {},
-      success(res) {
-        console.log(res)
+    let that=this;
+    wx.getStorage({
+      key: 'token',
+      success: (res_token)=> {
+        network.GET({
+          url: 'wxclient/shop/userCenter',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            'token': res_token.data
+          },
+          params: {},
+          success(res) {
+            console.log(res)
+            that.setData({
+              myinfo:res.data.data
+            })
+          },
+        })
       },
     })
+   
   },
   loginout() {
     wx.removeStorage({
