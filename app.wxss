@@ -142,19 +142,24 @@ page {
   padding: 10rpx 0;
 }
 /* 搜索 */
-
+.search{
+  position: fixed;
+  top: 0;
+  padding: 20rpx 0;
+  left: 0;
+  right: 0;
+   margin:0 auto;
+   width: 100%;
+  z-index: 10;
+background-color: #fff;
+}
 .search_box {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 26rpx;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 20rpx auto;
+  margin: 0 auto;
   width: 90%;
-  z-index: 10;
 }
 
 .search_input {

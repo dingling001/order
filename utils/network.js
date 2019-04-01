@@ -51,7 +51,7 @@ function request(method, requestHandler) {
             console.log(res.data)
           }
         })
-        wx.redirectTo({
+        wx.reLaunch({
           url: '/pages/login/login',
         })
       } else if (res.data.code == 500) {
