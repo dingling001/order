@@ -1,0 +1,4 @@
+/* pages/my/changepass/changepass.wxss */
+page{
+  background-color: #fff;
+}
