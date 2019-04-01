@@ -1,12 +1,14 @@
 <!--pages/goods/goods.wxml-->
-<navigator class='search_box' url='./search/search'>
-  <view class='search_input'>
-    <icon type="search" size="16" color="#BBBBBB"></icon>
-    <input placeholder='请输入关键字' type='text' placeholder-class='input_pla'></input>
-    <icon type="clear" size="16" color="##D8D8D9"></icon>
-  </view>
-  <view class='search_btn'>搜索</view>
-</navigator>
+<view class='search'>
+  <navigator class='search_box' url='./search/search'>
+    <view class='search_input'>
+      <icon type="search" size="16" color="#BBBBBB"></icon>
+      <input placeholder='请输入关键字' type='text' placeholder-class='input_pla'></input>
+      <!-- <icon type="clear" size="16" color="##D8D8D9"></icon> -->
+    </view>
+    <!-- <view class='search_btn'>搜索</view> -->
+  </navigator>
+</view>
 <view class='menu'>
   <picker range='{{palt}}' bindchange='palt_fun'>{{palt[index]?palt[index]:'线上平台菜单导入'}}</picker>
   <view class='iconfont icon-xiala'></view>
@@ -17,15 +19,15 @@
       <view class='text'>{{item.name}}</view>
     </view>
   </scroll-view>
-  <scroll-view class='right' scroll-y>
+  <scroll-view class='right'  scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;"  bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad"  bindscroll="scroll" >
     <view class='r_top'>
       <swiper class='swiper_box' display-multiple-items='4'>
         <block>
           <swiper-item>
-            <view>商品名称</view>
+            <view>商品图片</view>
           </swiper-item>
           <swiper-item>
-            <view>商品图片</view>
+            <view>商品名称</view>
           </swiper-item>
           <swiper-item>
             <view>SKUID</view>
@@ -54,26 +56,12 @@
           <view class='price_box'>
             <view class='price_input'>
               <text>￥</text>
-              <input value='{{item.supplyPrice?item.supplyPrice:0}}' bindinput=''></input>
+              <input value='{{item.supplyPrice}}' bindinput='supply_fn' id='{{item.id}}' data-index='{{index}}'></input>
             </view>
-            <view class='btn'>上传</view>
+            <view class='btn' data-index='{{index}}' bindtap='commoditySave'>上传</view>
           </view>
         </view>
       </view>
     </view>
-    <!-- <view class='right_item'>
-      <view class='r_img'>
-        <image src='../imgs/goods.png' mode='widthFix'></image>
-      </view>
-      <view class='r_info'>
-        <view>
-          <text>大白菜</text>
-          <text>500g</text>
-        </view>
-        <view class='weight'>1份</view>
-        <view class='price_box'><view class='price_input'><text>￥</text><input value='12.5' bindinput=''></input></view> <view class='btn'>上传</view></view>
-      </view>
-    </view> -->
-
   </scroll-view>
 </view>

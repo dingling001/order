@@ -6,13 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-myinfo:[]
+    myinfo: []
   },
-  geMyData(){
-    let that=this;
+  geMyData() {
+    let that = this;
     wx.getStorage({
       key: 'token',
-      success: (res_token)=> {
+      success: (res_token) => {
         network.GET({
           url: 'wxclient/shop/userCenter',
           header: {
@@ -23,19 +23,22 @@ myinfo:[]
           success(res) {
             console.log(res)
             that.setData({
-              myinfo:res.data.data
+              myinfo: res.data.data
             })
           },
         })
       },
     })
-   
+
+  },
+  user(){
+
   },
   loginout() {
     wx.removeStorage({
       key: 'token',
       success: function(res) {
-        wx.navigateTo({
+        wx.reLaunch({
           url: '../login/login',
         })
       },
