@@ -59,6 +59,16 @@ function request(method, requestHandler) {
           title: res.data.msg,
           icon: 'none'
         })
+        // setTimeout((res) => {
+        //   wx.removeStorage({
+        //     key: 'token',
+        //     success(res) {
+        //       wx.reLaunch({
+        //         url: '/pages/login/login',
+        //       })
+        //     }
+        //   })
+        // }, 2000)
       } else {
         wx.showToast({
           title: res.data.msg,

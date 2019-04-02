@@ -37,7 +37,7 @@ Page({
               "token": res_token.data
             },
             params: {
-              paltform: 'wx',
+              platform: 'wx',
               password: that.data.new_pass
             },
             success(res) {

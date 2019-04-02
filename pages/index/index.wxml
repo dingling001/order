@@ -14,12 +14,16 @@
     <image src='../imgs/bg.png' mode='widthFix'></image>
   </view>
   <view class='list'>今日平台单量</view>
-  <view class='index_list'>
+
+  <view class='index_list' wx:if='{{list.length==0}}'>
+    <view class='nodata'>暂无数据</view>
+  </view>
+  <view class='index_list' wx:else>
     <view class='index_item' wx:for='{{list}}' wx:key='{{item.orderTotal}}'>
       <view class='index_left'>
         <view class='icons_box'>
-        {{item.platformName}}
-        <!-- <image class='icons' src='../imgs/logo.png'></image> -->
+          {{item.platformName}}
+          <!-- <image class='icons' src='../imgs/logo.png'></image> -->
         </view>
         <view>今日{{item.orderTotal}}单</view>
       </view>

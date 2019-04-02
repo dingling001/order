@@ -31,9 +31,6 @@ Page({
     })
 
   },
-  user() {
-
-  },
   loginout() {
     let that = this;
     wx.getStorage({
@@ -46,7 +43,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            paltform: 'wx',
+            platform: 'wx',
           },
           success(res) {
             wx.removeStorage({
@@ -60,6 +57,18 @@ Page({
           },
         })
       },
+    })
+  },
+  call_managePhone(e) {
+    let phone = e.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
+  },
+  call_shopPhone(e) {
+    let phone = e.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone,
     })
   },
   onLoad: function(options) {

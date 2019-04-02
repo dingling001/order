@@ -4,7 +4,7 @@
 </view>
 <view class='login_input'>
   <view class='iconfont icon-shouji'></view>
-  <input placeholder='请输入手机号' placeholder-class='login_pla' bindinput='phone_fun'></input>
+  <input placeholder='请输入手机号' placeholder-class='login_pla' bindinput='phone_fun' type='number'></input>
   <!-- <view class='code_box' bindtap='getCode' wx:if='{{cansend}}'>{{msg}}</view>
   <view class='code_box' wx:else>{{msg}}</view> -->
 </view>

@@ -16,7 +16,7 @@ Page({
       that.setData({
         tab: e.target.dataset.tab
       })
-    }  
+    }
     this.getOrderList(this.data.tab)
   },
   getOrderList(orderStatus){
@@ -34,7 +34,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            paltform: 'wx',
+            platform: 'wx',
             current:0,
             size:that.data.size,
             orderStatus: orderStatus
@@ -49,7 +49,7 @@ Page({
     })
     wx.hideLoading()
   },
- 
+
   onLoad: function (options) {
     this.getOrderList(0)
   },

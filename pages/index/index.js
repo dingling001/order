@@ -24,7 +24,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            paltform: 'wx'
+            platform: 'wx'
           },
           success(res) {
             that.setData({

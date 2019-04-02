@@ -24,7 +24,7 @@ Page({
     })
     console.log(this.data.palt_list[e.detail.value])
     this.importCategory(this.data.palt_list[e.detail.value].code)
-    this.getCategoryVo();
+    this.getCategoryVo(this.data.palt_list[e.detail.value].code);
   },
 
   get_platform() {
@@ -39,7 +39,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            paltform: 'wx',
+            platform: 'wx',
           },
           success(res) {
             let palt = [];
@@ -50,6 +50,7 @@ Page({
               palt: palt,
               palt_list: res.data.data
             })
+            that.getCategoryVo(res.data.data[0].code)
           },
         })
       },
@@ -70,7 +71,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            paltform: 'wx',
+            platform: 'wx',
             limit: that.data.limit,
             page: that.data.page,
             name: name,
@@ -139,7 +140,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            paltform: 'wx',
+            platform: 'wx',
             categoryName,
             id,
             name,
@@ -171,7 +172,7 @@ Page({
     this.getGoodsList(this.data.gategory[gindex].name)
   },
   // 获取分类
-  getCategoryVo() {
+  getCategoryVo(platformCode) {
     let that = this;
     wx.getStorage({
       key: 'token',
@@ -183,7 +184,8 @@ Page({
             "token": res_token.data
           },
           params: {
-            paltform: 'wx',
+            platform: 'wx',
+            platformCode: platformCode
           },
           success(res) {
             that.getGoodsList(res.data.data[0].name)
@@ -208,7 +210,7 @@ Page({
             "token": res_token.data
           },
           params: {
-            paltform: 'wx',
+            platform: 'wx',
             platformCode: platformCode
           },
           success(res) {
@@ -232,7 +234,7 @@ Page({
       }
     });
 
-    this.getCategoryVo();
+    // this.getCategoryVo();
     // loadMore(that);
   },
 
