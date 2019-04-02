@@ -31,15 +31,33 @@ Page({
     })
 
   },
-  user(){
+  user() {
 
   },
   loginout() {
-    wx.removeStorage({
+    let that = this;
+    wx.getStorage({
       key: 'token',
-      success: function(res) {
-        wx.reLaunch({
-          url: '../login/login',
+      success: function(res_token) {
+        network.GET({
+          url: 'wxclient/user/logout',
+          header: {
+            "Content-Type": "application/json;charset=UTF-8",
+            "token": res_token.data
+          },
+          params: {
+            paltform: 'wx',
+          },
+          success(res) {
+            wx.removeStorage({
+              key: 'token',
+              success: function() {
+                wx.reLaunch({
+                  url: '../login/login',
+                })
+              },
+            })
+          },
         })
       },
     })

@@ -177,9 +177,16 @@ Page({
     wx.getStorage({
       key: 'token',
       success: function(res) {
-        wx.switchTab({
-          url: '../index/index',
+        wx.showToast({
+          title: '自动登录中...',
+          icon: 'none',
+          mask:true
         })
+        setTimeout((res) => {
+          wx.switchTab({
+            url: '../index/index',
+          })
+        }, 1000)
       },
     })
   },

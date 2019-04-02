@@ -93,3 +93,6 @@
   color: #F71F1F;
   font-size: 30rpx;
 }
+.top image{
+  width: 100%;
+}

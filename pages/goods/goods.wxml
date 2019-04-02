@@ -19,7 +19,7 @@
       <view class='text'>{{item.name}}</view>
     </view>
   </scroll-view>
-  <scroll-view class='right'  scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;"  bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad"  bindscroll="scroll" >
+  <scroll-view class='right' scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad" bindscroll="scroll">
     <view class='r_top'>
       <swiper class='swiper_box' display-multiple-items='4'>
         <block>
@@ -56,12 +56,13 @@
           <view class='price_box'>
             <view class='price_input'>
               <text>￥</text>
-              <input value='{{item.supplyPrice}}' bindinput='supply_fn' id='{{item.id}}' data-index='{{index}}'></input>
+              <input type='digit' value='{{item.supplyPrice}}' bindinput='supply_fn' id='{{item.id}}' data-index='{{index}}' placeholder='请输入价格'></input>
             </view>
             <view class='btn' data-index='{{index}}' bindtap='commoditySave'>上传</view>
           </view>
         </view>
       </view>
+      <view class='moredata' wx:if='{{hideBottom}}'>{{loadMoreData}}</view>
     </view>
   </scroll-view>
 </view>

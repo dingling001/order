@@ -1,49 +1,5 @@
 // pages/goods/goods.js
 let network = require('../../utils/network.js');
-var page = 0;
-var limit = 10;
-var name = '';
-var secondaryCategory = '';
-var loadMore = function(that) {
-  var that = this;
-  wx.showLoading({
-    title: '加载中……',
-  })
-  wx.getStorage({
-    key: 'token',
-    success: function(res_token) {
-      network.GET({
-        url: 'wxclient/commodity/commodityList',
-        header: {
-          "Content-Type": "application/json;charset=UTF-8",
-          "token": res_token.data
-        },
-        params: {
-          paltform: 'wx',
-          page: page,
-          limit: limit,
-          name: name,
-          secondaryCategory: secondaryCategory
-        },
-        success(res) {
-          let goodsList = res.data.data.records;
-          for (let i in goodsList) {
-            goodsList[i].picture = goodsList[i].picture.split(',')[0]
-          }
-          for (var i = 0; i < res.data.data.records.length; i++) {
-            goodsList.push(res.data.data.records[i]);
-          }
-          that.setData({
-            goodsList: goodsList
-          })
-          page++;
-          wx.hideLoading()
-        },
-      })
-    },
-  })
-}
-
 Page({
   data: {
     palt: [],
@@ -54,17 +10,21 @@ Page({
     gategory: [],
     gindex: 0,
     limit: 10,
+    page: 1,
+    allPages: 0,
     scrollTop: 0,
-    scrollHeight: 0
+    scrollHeight: 0,
+    hideBottom: false
   },
 
   palt_fun(e) {
     this.setData({
-      index: e.detail.value
+      index: e.detail.value,
+      gindex: 0
     })
     console.log(this.data.palt_list[e.detail.value])
     this.importCategory(this.data.palt_list[e.detail.value].code)
-    // this.getGoodsList(this.data.palt[e.detail.value], '')
+    this.getCategoryVo();
   },
 
   get_platform() {
@@ -95,41 +55,50 @@ Page({
       },
     })
   },
-  // getGoodsList(name = '', secondaryCategory = '') {
-  //   let that = this;
-  //   wx.showLoading({
-  //     title: '加载中……',
-  //   })
-  //   wx.getStorage({
-  //     key: 'token',
-  //     success: function(res_token) {
-  //       network.GET({
-  //         url: 'wxclient/commodity/commodityList',
-  //         header: {
-  //           "Content-Type": "application/json;charset=UTF-8",
-  //           "token": res_token.data
-  //         },
-  //         params: {
-  //           paltform: 'wx',
-  //           limit: that.data.limit,
-  //           name: name,
-  //           secondaryCategory: secondaryCategory
-  //         },
-  //         success(res) {
-  //           let goodsList = res.data.data.records;
-  //           for (let i in goodsList) {
-  //             goodsList[i].picture = goodsList[i].picture.split(',')[0]
-  //           }
-  //           that.setData({
-  //             goodsList: res.data.data.records
-  //           })
+  getGoodsList(name = '', secondaryCategory = '') {
+    let that = this;
+    wx.showLoading({
+      title: '加载中……',
+    })
+    wx.getStorage({
+      key: 'token',
+      success: function(res_token) {
+        network.GET({
+          url: 'wxclient/commodity/commodityList',
+          header: {
+            "Content-Type": "application/json;charset=UTF-8",
+            "token": res_token.data
+          },
+          params: {
+            paltform: 'wx',
+            limit: that.data.limit,
+            page: that.data.page,
+            name: name,
+            secondaryCategory: secondaryCategory
+          },
+          success(res) {
+            let goodsList = res.data.data.records;
+            if (that.data.page == 1) {
+              that.setData({
+                goodsList: res.data.data.records,
+                allPages: res.data.data.pages
+              })
+            } else {
+              let goodsList = that.data.goodsList;
+              goodsList = goodsList.concat(res.data.data.records);
+              that.setData({
+                goodsList: goodsList,
+                allPages: res.data.data.pages,
+                hideBottom: true
+              })
+            }
 
-  //           wx.hideLoading()
-  //         },
-  //       })
-  //     },
-  //   })
-  // },
+            wx.hideLoading()
+          },
+        })
+      },
+    })
+  },
   // 输入价格
   supply_fn(e) {
     let index = e.currentTarget.dataset.index;
@@ -184,7 +153,10 @@ Page({
             unit,
           },
           success(res) {
-            console.log(res)
+            wx.showToast({
+              title: res.data.data,
+              icon: 'none'
+            })
           },
         })
       },
@@ -196,7 +168,7 @@ Page({
     this.setData({
       gindex: gindex
     })
-    // this.getGoodsList(this.data.gategory[gindex].name)
+    this.getGoodsList(this.data.gategory[gindex].name)
   },
   // 获取分类
   getCategoryVo() {
@@ -214,7 +186,7 @@ Page({
             paltform: 'wx',
           },
           success(res) {
-            // that.getGoodsList(res.data.data[0].name)
+            that.getGoodsList(res.data.data[0].name)
             that.setData({
               gategory: res.data.data
             })
@@ -240,10 +212,10 @@ Page({
             platformCode: platformCode
           },
           success(res) {
-            // that.getGoodsList(res.data.data[0].name)
-            that.setData({
-              gategory: res.data.data
-            })
+            that.getGoodsList(that.data.gategory[0].name)
+            // that.setData({
+            //   gategory: res.data.data
+            // })
           },
         })
       },
@@ -261,13 +233,30 @@ Page({
     });
 
     this.getCategoryVo();
-    loadMore(that);
+    // loadMore(that);
   },
 
   bindDownLoad: function() {
     var that = this;
-    loadMore(that);
-    console.log("lower");
+    // loadMore(that);
+    if (that.data.page == that.data.allPages) {
+      that.setData({
+        loadMoreData: '已经到顶',
+        hideBottom: false
+      })
+      return;
+    }
+    setTimeout(function() {
+      console.log('上拉加载更多');
+      var tempCurrentPage = that.data.page;
+      tempCurrentPage = tempCurrentPage + 1;
+      that.setData({
+        page: tempCurrentPage,
+        hideBottom: true
+      })
+      that.getGoodsList(that.data.gategory[that.data.gindex].name, '');
+    }, 300);
+
   },
   scroll: function(event) {
     this.setData({
@@ -275,14 +264,14 @@ Page({
     });
   },
   topLoad: function(event) {
-    //   该方法绑定了页面滑动到顶部的事件，然后做上拉刷新
-    page = 0;
-    this.setData({
-      list: [],
-      scrollTop: 0
-    });
-    loadMore(this);
-    console.log("lower");
+    //   //   该方法绑定了页面滑动到顶部的事件，然后做上拉刷新
+    //   page = 0;
+    //   this.setData({
+    //     list: [],
+    //     scrollTop: 0
+    //   });
+    //   // loadMore(this);
+    //   console.log("lower");
   },
   onReady: function() {
 
