@@ -35,7 +35,7 @@ Page({
         network.GET({
           url: 'wxclient/platform/list',
           header: {
-            "Content-Type": "application/json;charset=UTF-8",
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
             "token": res_token.data
           },
           params: {
@@ -50,7 +50,7 @@ Page({
               palt: palt,
               palt_list: res.data.data
             })
-            that.getCategoryVo(res.data.data[0].code)
+            that.getCategoryVo(res.data.data[that.data.gindex].code)
           },
         })
       },
@@ -67,7 +67,7 @@ Page({
         network.GET({
           url: 'wxclient/commodity/commodityList',
           header: {
-            "Content-Type": "application/json;charset=UTF-8",
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             "token": res_token.data
           },
           params: {
@@ -133,25 +133,26 @@ Page({
     wx.getStorage({
       key: 'token',
       success: (res_token) => {
-        network.POST({
+        network.GET({
           url: 'wxclient/commodity/commoditySave',
           header: {
-            "Content-Type": "application/json;charset=UTF-8",
-            "token": res_token.data
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+            "token": res_token.data,
+            'platform': 'wx',
           },
           params: {
-            platform: 'wx',
-            categoryName,
-            id,
-            name,
-            picture,
+            // platform: 'wx',
+            // categoryName,
+            // id,
+            // name,
+            // picture,
             platformCode,
-            secondaryCategoryName,
-            skuCode,
+            // secondaryCategoryName,
+            // skuCode,
+            // unit,
+            // spec,
             skuid,
-            spec,
             supplyPrice,
-            unit,
           },
           success(res) {
             wx.showToast({
@@ -162,14 +163,14 @@ Page({
         })
       },
     })
-
   },
   left_nav(e) {
     let gindex = e.currentTarget.dataset.index;
     this.setData({
-      gindex: gindex
+      gindex: gindex,
+      page: 1,
     })
-    this.getGoodsList(this.data.gategory[gindex].name)
+    this.getCategoryVo(this.data.palt_list[this.data.index].code);
   },
   // 获取分类
   getCategoryVo(platformCode) {
@@ -180,7 +181,7 @@ Page({
         network.GET({
           url: 'wxclient/category/getCategoryVo',
           header: {
-            "Content-Type": "application/json;charset=UTF-8",
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             "token": res_token.data
           },
           params: {
@@ -188,7 +189,7 @@ Page({
             platformCode: platformCode
           },
           success(res) {
-            that.getGoodsList(res.data.data[0].name)
+            that.getGoodsList(res.data.data[that.data.gindex].name)
             that.setData({
               gategory: res.data.data
             })
@@ -206,7 +207,7 @@ Page({
         network.GET({
           url: 'wxclient/category/importCategory',
           header: {
-            "Content-Type": "application/json;charset=UTF-8",
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             "token": res_token.data
           },
           params: {
@@ -283,7 +284,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    // this.get_platform();
   },
 
   /**

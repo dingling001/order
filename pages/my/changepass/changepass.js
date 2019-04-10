@@ -33,7 +33,7 @@ Page({
           network.GET({
             url: 'wxclient/user/updatePassword',
             header: {
-              "Content-Type": "application/json;charset=UTF-8",
+              "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
               "token": res_token.data
             },
             params: {
